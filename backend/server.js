@@ -16,9 +16,9 @@ connectToDatabase()
 
 init();
 
-app.get('/',(req,res) => res.send("Success"));
+app.get('/api',(req,res) => res.send("Success"));
 
-app.use('/quote',quoteRoute);
+app.use('/api/quote',quoteRoute);
 
 
 
