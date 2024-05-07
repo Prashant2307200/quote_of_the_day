@@ -8,12 +8,14 @@ const password = process.env.MONGODB_PASSWORD;
 const connectToDatabase = async () => {
     try{
         await mongoose.connect(mongoURL,{
-            useNewUrlParser: true,
+            /*useNewUrlParser: true,
             useUnifiedTopology: true,
+            useCreateIndex: true,
+            useFindAndModify: false,
             auth: {
                 username: username,
                 password: password
-            }
+            }*/
         })
         console.log("Connected to MongoDB successfully done");
     }
