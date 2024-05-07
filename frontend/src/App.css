@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+*:not(h1,h2,h3){
+    font: inherit;
+}
+
+*::before, *::after ,* {
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 10rem;
+    min-height: 100vh;
+    margin-inline: auto;
+    width: min(70ch, calc(100% - 4rem));
+}
+
+html{
+    color-scheme: dark light;
+    line-height: 1.6;
+    font-family: system-ui;
+    font-size: clamp(1.125rem,2vw,1.25rem);
+}
+
+.App,form{
+    display: grid;
+    gap: 1rem;
+}
+
+button,input{
+    padding: .5rem 0;
+    border: none;
+    outline: none;
+    border-radius: .25rem;
+    font-weight: bold;
+}
+
+input{
+    background-color: #333;
+    padding-left: 1rem;
+}
+
+form{
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: .5rem;
+}
+
+form button{
+    background-color: royalblue;
+    transition: 500ms;
+    &:hover{
+        background-color: rgba(65, 105, 225, 0.848);
+    }
+}
+
+h1{
+    text-wrap: balanced;
+}
+
+.App > button{
+    color: royalblue;
+    background-color: transparent;
+    border: 2px solid royalblue;
+    transition: 500ms;
+    &:hover{
+        background-color: #333;
+    }
+}
+
+.quote{
+    background-color: #f2f2f2;
+    color: black;
+    font-weight: 300;
+    padding: 2rem;
+    border-radius: .1rem 4rem .1rem 4rem;
+    outline: .1px solid black;
+    outline-offset: -10px;
+}
+
+hr{
+    border-top: .1px solid black;
+    margin: 1rem 0;
+}
+
+.author{
+    font-weight: lighter;
+    float: right;
+}
+
