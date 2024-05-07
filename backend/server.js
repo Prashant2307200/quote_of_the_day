@@ -14,7 +14,7 @@ connectToDatabase()
     });
 })
 
-init();
+// init();
 
 app.get('/',(req,res) => res.send("Success"));
 
