@@ -7,7 +7,7 @@
       }
     ],
     "routes": [
-      { "src": "/quote", "dest": "/server.js" },
+      { "src": "/quote", "dest": "/server.js" }
     ]
   }
   
