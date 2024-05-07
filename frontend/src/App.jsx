@@ -8,7 +8,7 @@ function App() {
 
   const fetchQuote = async () => {
     try {
-      const quoteRes = await fetch('http://localhost:3000/quote/');
+      const quoteRes = await fetch('https://quote-of-the-day-five.vercel.app/quote/');
       const { quote,author } = await quoteRes.json();
       setQuote(quote);
     } catch (err) {
@@ -19,7 +19,7 @@ function App() {
   const handleOnSearch = async (e) => {
     e.preventDefault();
     try {
-      const quoteRes = await fetch(`http://localhost:3000/quote/search?author=${author}`);
+      const quoteRes = await fetch(`https://quote-of-the-day-five.vercel.app/quote/search?author=${author}`);
       const quote = await quoteRes.json();
       if (quote.length > 0) { 
         setQuote(quote[0].quote);
