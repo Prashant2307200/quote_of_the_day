@@ -8,7 +8,7 @@ connectToDatabase()
 .catch(() => console.log('error'));
 
 let quotes = [];
-(async function() {
+module.exports = async function() {
 
     await Quote.deleteMany({});
 
@@ -23,7 +23,7 @@ let quotes = [];
         });
         await quote.save()
     }
-})();
+};
 
 // mongodb+srv://prashantdobariya276:<password>@cluster0.sj7nmvc.mongodb.net/
 
