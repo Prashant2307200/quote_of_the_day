@@ -14,7 +14,9 @@ connectToDatabase()
     });
 })
 
-// init();
+init()
+.then(res => console.log("Data initialized"))
+.catch(err => console.error("Something wrong"));
 
 app.get('/',(req,res) => res.send("Success"));
 
