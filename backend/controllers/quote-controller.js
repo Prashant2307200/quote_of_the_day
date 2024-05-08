@@ -18,7 +18,6 @@ const search = asyncWrap(async (req, res) => {
     let { author } = req.query;
     const quotesByAuthor = await Quote.find({ author });
     // const quotesByAuthor = quotes.filter(quote => quote.author == author);
-    // console.log(quotesByAuthor[0]);
     res.json(quotesByAuthor);
 });
 

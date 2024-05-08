@@ -9,7 +9,9 @@ function App() {
   const fetchQuote = async () => {
     try {
       const quoteRes = await fetch('https://quote-of-the-day-five.vercel.app/quote/');
+      // const quoteRes = await fetch('http://localhost:3000/quote/');
       const { quote } = await quoteRes.json();
+      console.log(quote);
       setQuote(quote);
     } catch (err) {
       console.error('Error fetching quote: ' + err);
@@ -20,12 +22,10 @@ function App() {
     e.preventDefault();
     try {
       const quoteRes = await fetch(`https://quote-of-the-day-five.vercel.app/quote/search?author=${author}`);
-      const quote = await quoteRes.json();
-      if (quote.length > 0) { 
-        setQuote(quote[0].quote);
-      } else {
-        setQuote('Sorry, no quote found for this author');
-      }
+      // const quoteRes = await fetch(`http://localhost:3000/quote/search?author=${author}`);
+      const quotes = await quoteRes.json(); 
+      console.log(quotes[Math.floor(Math.random())*quotes.length +1].quote);
+      setQuote(quotes.length == 0 ? "No Quote published by this Author":quotes[Math.floor(Math.random()*quotes.length)].quote);
     } catch (err) {
       console.error('Error fetching quote: ' + err);
     }
@@ -43,7 +43,7 @@ function App() {
     <div className="App">
       <h1>Quote of the Day!</h1>
       <form onSubmit={handleOnSearch}> 
-        <input type="text" name="author" placeholder="Search by author" value={author} onChange={handleOnChange} />
+        <input type="text" placeholder="Search by author" value={author} onChange={handleOnChange} />
         <button type="submit">Search</button>
       </form>
       <button onClick={fetchQuote}>Get random Quote</button>
