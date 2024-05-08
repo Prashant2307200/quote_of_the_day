@@ -24,7 +24,7 @@ function App() {
       const quoteRes = await fetch(`https://quote-of-the-day-five.vercel.app/quote/search?author=${author}`);
       // const quoteRes = await fetch(`http://localhost:3000/quote/search?author=${author}`);
       const quotes = await quoteRes.json(); 
-      console.log(quotes[Math.floor(Math.random())*quotes.length +1].quote);
+      // console.log(quotes[Math.floor(Math.random())*quotes.length +1].quote);
       setQuote(quotes.length == 0 ? "No Quote published by this Author":quotes[Math.floor(Math.random()*quotes.length)].quote);
     } catch (err) {
       console.error('Error fetching quote: ' + err);
