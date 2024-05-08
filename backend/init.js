@@ -7,22 +7,15 @@ connectToDatabase()
 .then(() => console.log('connected'))
 .catch(() => console.log('error'));
 
-let quotes = [];
 async function init() {
 
     await Quote.deleteMany({});
 
     const fetchURL = quote_url;
     const URLResp = await fetch(fetchURL);
-    quotes = await URLResp.json();
+    const quotes = await URLResp.json();
 
-    for (const quoteData of quotes) {
-        const quote = await new Quote({
-            quote: quoteData.q,
-            author: quoteData.a,
-        });
-        await quote.save()
-    }
+    Quote.insertMany(quotes);
 };
 
 module.exports = {
