@@ -13,9 +13,15 @@ async function init() {
 
     const fetchURL = quote_url;
     const URLResp = await fetch(fetchURL);
-    const quotes = await URLResp.json();
+    let quotes = await URLResp.json();
 
-    Quote.insertMany(quotes);
+    for (const quoteData of quotes) {
+        const quote = await new Quote({
+            quote: quoteData.q,
+            author: quoteData.a,
+        });
+        await quote.save()
+    }
 };
 
 module.exports = {
