@@ -8,7 +8,7 @@ const asyncWrap = fn => (req, res ,next) => {
 };
 
 const home = asyncWrap(async (req, res) => {  
-    let n = Math.floor(Math.random()*50);
+    let n = Math.floor(Math.random()*30);
     const quotes = await Quote.find({});
     const quoteData = quotes[n];
     res.json(quotes[n]);
