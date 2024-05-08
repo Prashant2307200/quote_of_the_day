@@ -1,7 +1,7 @@
 const express = require("express");
 const quoteRoute = require('./routers/quote-router.js');
 const connectToDatabase = require("./utils/database.js");
-const init = require("./init.js");
+const { init } = require("./init.js");
 
 const app = express();
 const port = process.env.PORT;

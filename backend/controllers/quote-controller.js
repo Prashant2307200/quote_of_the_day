@@ -1,6 +1,7 @@
 const fetchURLRand = process.env.API_RAND_URL;
 const quote_url = process.env.API_URL;
 const Quote = require('../models/Quote.js'); 
+// const quotes = require('../init.js')
 
 const asyncWrap = fn => (req, res ,next) => {
     Promise.resolve(fn(req, res, next)).catch(next);
@@ -10,13 +11,14 @@ const home = asyncWrap(async (req, res) => {
     let n = Math.floor(Math.random()*50);
     const quotes = await Quote.find({});
     const quoteData = quotes[n];
-    res.json(quoteData);
+    res.json(quotes[n]);
 });
 
 const search = asyncWrap(async (req, res) => {
     const { author } = req.query;
     const quotesByAuthor = await Quote.find({ author });
-    console.log(quotesByAuthor);
+    // const quotesByAuthor = quotes.filter(quote => quote.author == author);
+    // console.log(quotesByAuthor[0]);
     res.json(quotesByAuthor);
 });
 

@@ -9,7 +9,7 @@ function App() {
   const fetchQuote = async () => {
     try {
       const quoteRes = await fetch('https://quote-of-the-day-five.vercel.app/quote/');
-      const { quote,author } = await quoteRes.json();
+      const { quote } = await quoteRes.json();
       setQuote(quote);
     } catch (err) {
       console.error('Error fetching quote: ' + err);
@@ -43,7 +43,7 @@ function App() {
     <div className="App">
       <h1>Quote of the Day!</h1>
       <form onSubmit={handleOnSearch}> 
-        <input type="text" placeholder="Search by author" value={author} onChange={handleOnChange} />
+        <input type="text" name="author" placeholder="Search by author" value={author} onChange={handleOnChange} />
         <button type="submit">Search</button>
       </form>
       <button onClick={fetchQuote}>Get random Quote</button>
