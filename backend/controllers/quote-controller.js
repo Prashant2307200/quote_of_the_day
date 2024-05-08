@@ -15,8 +15,11 @@ const home = asyncWrap(async (req, res) => {
 });
 
 const search = asyncWrap(async (req, res) => {
-    const { author } = req.query;
-    const quotesByAuthor = await Quote.find({ author });
+    let { isAuthor } = req.query;
+    isAuthor = isAuthor.match(/\b\w+\b/g);
+    isAuthor = isAuthor.map(a => a.charAt(0).toUpperCase() + a.slice(1).toLowerCase());
+    isAuthor = isAuthor.join(' ');
+    const quotesByAuthor = await Quote.find({ author : isAuthor });
     // const quotesByAuthor = quotes.filter(quote => quote.author == author);
     // console.log(quotesByAuthor[0]);
     res.json(quotesByAuthor);
