@@ -27,10 +27,7 @@ async function init() {
     console.log(cnt);
 };
 
-module.exports = {
-    init
-    // quotes
-}
+init().then(res => console.log('saved'))
 
 // mongodb+srv://prashantdobariya276:<password>@cluster0.sj7nmvc.mongodb.net/
 
