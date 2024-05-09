@@ -15,13 +15,16 @@ async function init() {
     const URLResp = await fetch(fetchURL);
     let quotes = await URLResp.json();
 
+    let cnt = 0;
     for (const quoteData of quotes) {
+        cnt++;
         const quote = await new Quote({
             quote: quoteData.q,
             author: quoteData.a,
         });
         await quote.save()
     }
+    console.log(cnt);
 };
 
 module.exports = {
